@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+import time
+t = 1.2 # 0.8 seconds
+import os
+os.system("sudo airmon-ng start wlp3s0")
+time.sleep(t)
+os.system("ip a")
+time.sleep(t)
+os.system("sudo airodump-ng wlp3s0mon -c 1 --encrypt OPN -a")
+time.sleep(t)
+os.system("sudo airmon-ng stop wlp3s0mon")
+#after sudo airmon-ng stop 'your own network interface' you should cancel the scanning yourself, after that it continues the script.
+time.sleep(t)
+os.system("ip a")
+time.sleep(t)
+os.system("sudo ifconfig wlp3s0 down")
+time.sleep(t)
+#it prints the commands you have to use after sudo ifconfig wlp3s0 down'. 
+print("#")
+print("#")
+print("#")
+print("#")
+print("#")
+print("#")
+print("sudo macchanger -m TheNewMACaddress TheNameOfTheInterface")
+time.sleep(t)
+print("sudo ifconfig wlp3s0 up")
+
+#exit
